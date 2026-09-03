@@ -1,0 +1,45 @@
+
+<!-- <ul>
+@for (libro of arrayLibri; track libro) {
+  <li>{{ libro.titolo }}</li>
+  <li>{{ libro.annoPubblicazione }}</li>
+  <li>{{ libro.nomiAutori}}</li>
+} @empty {
+  <li>There are no items.</li>
+}
+</ul> -->
+<!-- mat sort e mat table-->
+
+<button mat-raised-button color="primary" (click)="apriFormInserimento()">Inserisci nuovo libro</button>
+
+<div class="tabella-wrapper">
+  <table mat-table [dataSource]="arrayLibriPaginati" matSort>
+  
+
+  <ng-container matColumnDef="titolo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Titolo </th>
+    <td mat-cell *matCellDef="let libro"> {{ libro.titolo }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="annoPubblicazione">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Anno Pubblicazione </th>
+    <td mat-cell *matCellDef="let libro"> {{ libro.annoPubblicazione }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nomiAutori">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome Autore </th>
+    <td mat-cell *matCellDef="let libro"> {{ libro.nomiAutori }} </td>
+  </ng-container>
+
+  <!--per mostrare la lista effettiva a schermo-->
+  <tr mat-header-row *matHeaderRowDef="colonneVisualizzate"></tr>  <!--per mostrare la lista effettiva a schermo-->
+  <tr mat-row *matRowDef="let row; columns: colonneVisualizzate;"></tr>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+

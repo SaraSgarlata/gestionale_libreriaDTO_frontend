@@ -1,0 +1,29 @@
+.form-libro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+}
+
+.campo-intero {
+  grid-column: span 2;
+}
+
+.sottotitolo {
+  color: gray;
+  font-size: 13px;
+  margin: 0 0 1px;
+   margin-left: 25px;
+}
+
+.separatore {
+  grid-column: span 2;
+  border-top: 1px solid #ccc;
+  margin: 8px 0;
+}
+
+.etichetta-sezione {
+  grid-column: span 2;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+

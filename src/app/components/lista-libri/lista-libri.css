@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  background-color: #eef2f7;
+  padding: 24px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.tabella-wrapper {
+  min-height: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  width: 100%;
+}
+
+mat-paginator {
+  margin-top: auto;
+  border-top: 1px solid #e0e0e0;
+}
+
+th.mat-mdc-header-cell {
+  background-color: #e3edfb;
+  color: #0c447c;
+  font-weight: 600;
+}
+
+tr.mat-mdc-row:nth-child(even) {
+  background-color: #fafbfd;
+}
+
+tr.mat-mdc-row:hover {
+  background-color: #eaf2fc;
+  cursor: default;
+}
+
+button[mat-raised-button] {
+  margin-bottom: 10px;
+}
