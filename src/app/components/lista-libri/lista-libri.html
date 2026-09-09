@@ -10,34 +10,59 @@
 </ul> -->
 <!-- mat sort e mat table-->
 
-<button mat-raised-button color="primary" (click)="apriFormInserimento()">Inserisci nuovo libro</button>
+<mat-toolbar color="primary">
+<mat-icon>menu_book</mat-icon>
+<span>Gestionale Libreria</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Logout
+  </button>
+</mat-toolbar>
 
-<div class="tabella-wrapper">
-  <table mat-table [dataSource]="arrayLibriPaginati" matSort>
-  
+<div class="pagina-contenuto">
+  <button mat-raised-button color="primary" (click)="apriFormInserimento()">
+    Inserisci nuovo libro
+  </button>
 
-  <ng-container matColumnDef="titolo">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Titolo </th>
-    <td mat-cell *matCellDef="let libro"> {{ libro.titolo }} </td>
-  </ng-container>
+  <mat-form-field appearance="outline" class="campo-ricerca">
+    <mat-label>Filtra libri</mat-label>
+    <input matInput (keyup)="applicaFiltro($event)"
+           placeholder="Cerca per titolo, anno o autore" #inputFiltro>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
 
-  <ng-container matColumnDef="annoPubblicazione">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Anno Pubblicazione </th>
-    <td mat-cell *matCellDef="let libro"> {{ libro.annoPubblicazione }} </td>
-  </ng-container>
+  <div class="tabella-wrapper">
+    <table mat-table [dataSource]="arrayLibriPaginati" matSort>
 
-  <ng-container matColumnDef="nomiAutori">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome Autore </th>
-    <td mat-cell *matCellDef="let libro"> {{ libro.nomiAutori }} </td>
-  </ng-container>
+      <ng-container matColumnDef="titolo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Titolo </th>
+        <td mat-cell *matCellDef="let libro"> {{ libro.titolo }} </td>
+      </ng-container>
 
-  <!--per mostrare la lista effettiva a schermo-->
-  <tr mat-header-row *matHeaderRowDef="colonneVisualizzate"></tr>  <!--per mostrare la lista effettiva a schermo-->
-  <tr mat-row *matRowDef="let row; columns: colonneVisualizzate;"></tr>
+      <ng-container matColumnDef="annoPubblicazione">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Anno Pubblicazione </th>
+        <td mat-cell *matCellDef="let libro"> {{ libro.annoPubblicazione }} </td>
+      </ng-container>
 
-</table>
+      <ng-container matColumnDef="nomiAutori">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome Autore </th>
+        <td mat-cell *matCellDef="let libro"> {{ libro.nomiAutori }} </td>
+      </ng-container>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+      <tr mat-header-row *matHeaderRowDef="colonneVisualizzate"></tr>
+      <tr mat-row *matRowDef="let row; columns: colonneVisualizzate;"></tr>
+
+      <tr class="mat-mdc-row riga-nessun-dato" *matNoDataRow>
+        <td class="mat-mdc-cell" [attr.colspan]="colonneVisualizzate.length">
+          Nessun libro corrisponde a "{{ inputFiltro.value }}"
+        </td>
+      </tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+  </div>
 </div>
 
 

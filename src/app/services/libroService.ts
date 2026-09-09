@@ -14,8 +14,12 @@ export class LibroService {
 
   constructor(private http: HttpClient) {}
 
-  getListaLibri() {
-    return this.http.get<Libro[]>('http://localhost:8080/findalllibro');
+  // filtro opzionale: viene passato al backend come query param ?filtro=...
+  // ed è il backend a filtrare i libri direttamente nella query sul database.
+  getListaLibri(filtro?: string) {
+    const url = 'http://localhost:8080/findalllibro';
+    const options = filtro ? { params: { filtro } } : {};
+    return this.http.get<Libro[]>(url, options);
   }
 
   salvaLibroConAutore(dati: any){

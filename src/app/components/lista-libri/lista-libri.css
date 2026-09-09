@@ -1,9 +1,25 @@
-:host {
-  display: block;
-  background-color: #eef2f7;
+.spacer {
+  flex: 1 1 auto;
+}
+
+.pagina-contenuto {
   padding: 24px;
+  background-color: #eef2f7;
   min-height: 100vh;
   box-sizing: border-box;
+}
+
+.campo-ricerca {
+  width: 100%;
+  max-width: 360px;
+  display: block;
+  margin-top: 16px;
+}
+
+.riga-nessun-dato td {
+  padding: 24px 16px;
+  color: gray;
+  font-style: italic;
 }
 
 .tabella-wrapper {
@@ -14,15 +30,11 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  margin-top: 16px;
 }
 
 table {
   width: 100%;
-}
-
-mat-paginator {
-  margin-top: auto;
-  border-top: 1px solid #e0e0e0;
 }
 
 th.mat-mdc-header-cell {
@@ -40,6 +52,11 @@ tr.mat-mdc-row:hover {
   cursor: default;
 }
 
-button[mat-raised-button] {
-  margin-bottom: 10px;
+mat-paginator {
+  margin-top: auto;
+  border-top: 1px solid #e0e0e0;
+}
+
+mat-toolbar mat-icon:first-child {
+  margin-right: 8px;
 }
