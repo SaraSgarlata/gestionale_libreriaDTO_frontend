@@ -1,0 +1,22 @@
+<div class="login-page">
+  <div class="login-card">
+    <h1>Gestionale Libreria</h1>
+    <p class="sottotitolo">Accedi per continuare</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="login-button">
+        Accedi
+      </button>
+    </form>
+  </div>
+</div>
